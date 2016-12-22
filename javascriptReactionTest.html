@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+		<style>
+
+		#shape {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			position: relative;
+		}
+
+		</style>
+	</head>
+	<body>
+		<!-- <div id="tweetDiv"></div> 
+		<p><input type="text" id="myNumber"></p>
+		<button id="guess">Guess</button> -->
+
+		<p>Your time: <span id="timeTaken"></span></p>
+
+		<button id="begin">Begin</button>
+
+		<div id="shape"></div>
+
+		<script type="text/javascript">
+
+		document.getElementById("shape").style.display = "none";
+
+		document.getElementById("begin").onclick = function() {
+
+			document.getElementById("begin").style.display = "none";
+
+		var start = new Date().getTime();
+
+			function getRandomColor() {
+
+				var letters = '0123456789ANCDEF'.split('');
+				var color = '#';
+				for (var i = 0; i < 6; i++ ) {
+					color += letters[Math.floor(Math.random() * 16)];
+				}
+
+				return color;
+			}
+
+
+			function makeShapeAppear() {
+
+				var top = Math.random() * 400;
+
+				var left = Math.random() * 400;
+
+				var width = (Math.random() * 200) + 100;
+
+				if (Math.random() > 0.5) {
+
+					document.getElementById("shape").style.borderRadius = "50%";
+
+				} else {
+
+					document.getElementById("shape").style.borderRadius = "0%";
+
+				}
+
+				document.getElementById("shape").style.backgroundColor = getRandomColor();
+
+				document.getElementById("shape").style.top = top + "px";
+
+				document.getElementById("shape").style.left = left + "px";
+
+				document.getElementById("shape").style.width = width + "px";
+
+				document.getElementById("shape").style.height = width + "px";
+
+				document.getElementById("shape").style.display = "block";
+
+				start = new Date().getTime();
+
+			}
+
+			function appearAfterDelay() {
+
+				setTimeout(makeShapeAppear, Math.random() * 2000);
+
+			}
+
+			appearAfterDelay();
+
+			document.getElementById("shape").onclick = function() {
+
+				document.getElementById("shape").style.display = "none";
+
+				var end = new Date().getTime();
+
+				var timeTaken = (end - start) / 1000;
+
+				document.getElementById("timeTaken").innerHTML = timeTaken + " seconds";
+
+				appearAfterDelay();
+
+			}
+
+		}
+
+			
+
+		/* 
+		 var tweetString = "";
+
+		var tweets = ["Tweet1", "Tweet2", "Tweet3"]
+
+		for (var i = 0; i < 3; i = i + 1) {
+
+			tweetString = tweetString + "<p>" + tweets[i] + "</p>"
+		}
+		
+		document.getElementById("tweetDiv").innerHTML = tweetString;
+		 
+	---
+
+		var tweetString = "";
+
+		var tweets = ["Tweet1", "Tweet2", "Tweet3"]
+
+		var i = 0
+
+		while (i < tweets.length) {
+
+			tweetString = tweetString + "<p>" + tweets[i] + "</p>"
+
+			i++;
+		}
+		
+		document.getElementById("tweetDiv").innerHTML = tweetString;
+
+	--
+
+				function doAGuess(correctAnswer) {
+
+			var guess = Math.random();
+
+				guess = guess * 6;
+
+				guess = Math.floor(guess);
+
+				if (guess == correctAnswer) {
+					return (true);
+				} else {
+					return (false);
+				}
+
+			}
+		
+
+		document.getElementById("guess").onclick = function() {
+
+			var myNumber = document.getElementById("myNumber").value;
+
+			var gotIt = false;
+
+			var numberOfGuesses = 1;
+
+			while (gotIt == false) {
+
+				if (doAGuess(myNumber) == true) {
+					gotIt = true;
+					alert("Got it! It was a " + myNumber + " and it took me " + numberOfGuesses + " guesses.");
+				} else {
+					numberOfGuesses++;
+				}
+
+			}
+
+		}	
+
+		*/
+
+
+		</script>
+
+	</body>
+</html>

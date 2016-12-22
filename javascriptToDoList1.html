@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		</style>
+	</head>
+	<body id="body">
+	  <p id="test">To Do List</p>
+	  <p id="error"></p>
+	  <input type="text" id="enter">
+	  <button id="myButton">Push</button>
+	  <button id="delete">Delete</button>
+	  <script>
+	// Variable for toggle
+				var flag = false; 
+
+				// Array that holds input value
+				var toDoList = [""];
+				
+				// Class1
+				var toDoListClass = document.getElementsByClassName("class1");
+
+				// Divs container
+				var divs = document.getElementsByTagName("div");
+
+				// When the "Push" button is clicked, it sends the info into the Array and then prints it to the screen.
+				// If nothing is in the input and "Push" is pressed, nothing happens.
+				document.getElementById("myButton").onclick = function() {
+					var arrayPush = document.getElementById("enter").value;
+					if (arrayPush.length == 0) {
+						// Error message
+						document.getElementById("error").innerHTML = "Please enter a value.";
+					} else {
+						for (var i in toDoList) {
+							// Creates Div with class1
+							var myDiv = document.createElement("div");
+							myDiv.className += "class1";
+							myDiv.innerHTML = arrayPush;
+							document.body.appendChild(myDiv);
+							// Erases input text
+							eraseText();						
+							// Removes error message
+							document.getElementById("error").innerHTML = "";
+
+						}
+					}
+				}
+
+				// When user clicks "Push" button, the input value is erased.
+				function eraseText() {
+					document.getElementById("enter").value = "";
+				}
+
+				// Loops through class1 container, which allows them to be onclicked
+				function classClickedDissapear() {	
+					for (var i=0; i < toDoListClass.length; i++) {
+						toDoListClass[i].onclick = function() {
+							this.style.display = "none";
+						}
+					}
+				}
+
+				function classClickedRemain() {
+					for (var i = 0; i < toDoListClass.length ; i++) {
+						toDoListClass[i].onclick = function() {
+							this.style.display = "block";
+						}
+					}
+				}
+
+				// When button "delete" is clicked on, users onclick toggles so it deletes any div element it clicks
+				document.getElementById("delete").onclick = function() {
+					if (flag === true) {
+						classClickedRemain();
+						flag = false;
+					} else {
+						classClickedDissapear();
+						flag = true;
+					}
+				}  
+	  </script>
+	</body>
+</html>

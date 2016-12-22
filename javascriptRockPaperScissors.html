@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	</head>
+	<body>
+		<p>Rock Paper and Scissors!</p>
+		<p>Please type in either "Rock", "Scissors", or "Paper". Everything is cAsE sEnSiTiVe.</p>
+		<button id="reload">Go again</button>
+		<p id="result"></p>
+		<script>
+		
+			var userChoice = prompt("What do you choose?")
+			var computerChoice = Math.random();
+
+			document.getElementById("reload").onclick = function() {
+
+				var userChoice = prompt("What do you choose?")
+				var computerChoice = Math.random();
+
+
+				if (computerChoice < .33) {
+					computerChoice = "Rock";
+				} else if (computerChoice <= .67) {
+					computerChoice = "Paper";
+				} else {
+					computerChoice = "Scissors";
+				}
+
+				function compare(choice1, choice2) {
+					if (choice1 === choice2) {
+						document.getElementById("result").innerHTML = "The result was a tie.";
+					} 
+					if (choice1==="Rock") {
+						if (choice2==="Scissors") {
+							document.getElementById("result").innerHTML = "User wins.";
+						} else {
+							document.getElementById("result").innerHTML = "Computer wins.";
+						}
+					} else if (choice1==="Paper") {
+						if (choice2==="Rock") {
+							document.getElementById("result").innerHTML = "User wins.";
+						} else {
+							document.getElementById("result").innerHTML = "Computer wins.";
+						}
+					} else if (choice1==="Scissors") {
+						if (choice2==="Rock") {
+							document.getElementById("result").innerHTML = "Computer wins.";
+						} else {
+							document.getElementById("result").innerHTML = "User wins.";
+						}
+					}
+				}
+
+				console.log(compare(userChoice, computerChoice));
+
+			}
+
+			if (computerChoice < .33) {
+				computerChoice = "Rock";
+			} else if (computerChoice <= .67) {
+				computerChoice = "Paper";
+			} else {
+				computerChoice = "Scissors";
+			}
+
+			function compare(choice1, choice2) {
+				if (choice1 === choice2) {
+					document.getElementById("result").innerHTML = "The result was a tie.";
+				} 
+				if (choice1==="Rock") {
+					if (choice2==="Scissors") {
+						document.getElementById("result").innerHTML = "User wins.";
+					} else {
+						document.getElementById("result").innerHTML = "Computer wins.";
+					}
+				} else if (choice1==="Paper") {
+					if (choice2==="Rock") {
+						document.getElementById("result").innerHTML = "User wins.";
+					} else {
+						document.getElementById("result").innerHTML = "Computer wins.";
+					}
+				} else if (choice1==="Scissors") {
+					if (choice2==="Rock") {
+						document.getElementById("result").innerHTML = "Computer wins.";
+					} else {
+						document.getElementById("result").innerHTML = "User wins.";
+					}
+				}
+			}
+
+			console.log(compare(userChoice, computerChoice));
+
+		</script>
+	</body>
+</html>
